@@ -28,9 +28,7 @@ pip install requests
 1. **Get an API Key:** Register for a free API key at the [U.S. Energy Information Administration (EIA) Open Data Portal](https://www.eia.gov/opendata/).
 2. **Configure the Script:** Open the Python script and replace `"INSERT_API_KEY_HERE"` with your actual EIA API key.
 3. **Run the Scanner:**
-```bash
-python cushing_scanner.py
-```
+
 
 ## Example Terminal Output
 ```text
