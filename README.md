@@ -20,6 +20,10 @@ I spend my leisure time to bridge physical engineering principles with quantitat
 
 ## Infrastructure Stack
 **Core:** Python 3.x
+
 **Data:** yfinance, EIA API, FINNHUB API,REST APIs
+
 **Math:** numpy, pandas, scipy
+
 **Visualization:** plotly, matplotlib, streamlit
+
