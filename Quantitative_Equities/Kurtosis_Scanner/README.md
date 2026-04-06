@@ -1,7 +1,7 @@
 # Quantitative Tail Risk Terminal (Kurtosis Scanner)
 
 ## Overview
-The Tail Risk Terminal is a Python-based command-line interface (CLI) designed to measure the non-normality of asset returns. By calculating the **Excess Kurtosis** of an asset over a rolling 1-year window, this engine detects "Fat Tails" (Leptokurtic distributions) to identify when standard mathematical pricing models are underestimating extreme market moves.
+The Tail Risk Terminal is a Python-based command-line interface (CLI) designed to measure the non-normality of asset returns. By calculating the Excess Kurtosis of an asset over a rolling 1-year window, this engine detects "Fat Tails" (Leptokurtic distributions) to identify when standard mathematical pricing models are underestimating extreme market moves.
 
 ## The Quantitative Edge
 Standard derivatives pricing (like Black-Scholes) assumes market returns follow a normal distribution. In reality, financial markets experience extreme, violent outliers far more often than a normal bell curve predicts. 
