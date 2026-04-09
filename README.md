@@ -2,7 +2,7 @@
 **STARTED 28 March 2026**
 
 ## Overview
-I spend my leisure time to bridge physical engineering principles with quantitative market mechanics.Take a look! 
+I spend my leisure time to bridge physical engineering principles with quantitative market mechanics. All the tools derived specifically on what i had learnt before.
 
 ## System Directory
 *This repository serves as a live, expanding index of my quantitative infrastructure.*
