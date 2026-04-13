@@ -13,11 +13,11 @@ I spend my leisure time to bridge physical engineering principles with quantitat
 * **Kurtosis Scanner:** Tail-risk detection using the 4th statistical moment.
 * **Cost-of-Carry Engine:** Theoretical forward/futures pricing for term structure and contango/backwardation detection.
 * **Basis Arbitrage Scanner:** Real-time quantitative scanner detecting mathematical mispricings between equity spot and futures markets for risk-free execution signals.
+* **(Future model will be logged here)*
 
 ### Physical Commodities
 * **Oil Inventory Flow:** Predictive modeling for global crude supply chains.
 * *(Future thermodynamic and geopolitical models will be logged here)*
-
 
 ## Infrastructure Stack
 **Core:** Python 3.x
