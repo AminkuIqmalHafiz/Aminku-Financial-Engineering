@@ -1,7 +1,7 @@
-# Convexity Desk 
+# Volatility_Surface
 
 ## Overview
-Convexity Desk is a Python-based quantitative terminal designed to map interactive 3D options volatility surfaces in real-time. By filtering for Out-Of-The-Money (OTM) derivatives across the term structure, it visualizes the exact mathematical curvature of market fear and institutional hedging.
+Volatility Surface Graph is a Python-based quantitative terminal designed to map interactive 3D options volatility surfaces in real-time. By filtering for Out-Of-The-Money (OTM) derivatives across the term structure, it visualizes the exact mathematical curvature of market fear and institutional hedging.
 
 ## Features
 * **Live Volatility Mapping:** Pulls live options chain data using the `yfinance` API.
