@@ -8,11 +8,10 @@ I spend my leisure time to bridge physical engineering principles with quantitat
 *This repository serves as a live, expanding index of my quantitative infrastructure.*
 
 ### Quantitative Equities 
-* **Convexity Desk:** 3D Volatility surface mapping and institutional skew analysis.
-* **Gamma Engine:** Zero-Gamma (GEX) level calculator for market regime detection.
+* **Futures_Pricing:** Listed files related to futures basics projects.
+* **Options_Pricing:** Listed files related to options basics projects.
+* **Swaps_Pricing:** Listed files related to swaps basics projects.
 * **Kurtosis Scanner:** Tail-risk detection using the 4th statistical moment.
-* **Cost-of-Carry Engine:** Theoretical forward/futures pricing for term structure and contango/backwardation detection.
-* **Basis Arbitrage Scanner:** Real-time quantitative scanner detecting mathematical mispricings between equity spot and futures markets for risk-free execution signals.
 * **(Future model will be logged here)*
 
 ### Physical Commodities
