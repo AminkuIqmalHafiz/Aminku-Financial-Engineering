@@ -16,6 +16,7 @@ I spend my leisure time to bridge physical engineering principles with quantitat
 
 ### Physical Commodities
 * **Oil Inventory Flow:** Predictive modeling for global crude supply chains.
+* **OPEC Macro Event Analysis** Correlating strategic barrel cut policies with Brent crude price action.
 * *(Future thermodynamic and geopolitical models will be logged here)*
 
 ## Infrastructure Stack
