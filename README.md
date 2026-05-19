@@ -2,7 +2,7 @@
 **STARTED 28 March 2026**
 
 ## Overview
-I spend my leisure time to bridge physical engineering principles with quantitative market mechanics. All the tools derived specifically on what i had learnt before.
+I spend my leisure time connecting physical engineering principles with quantitative market mechanics. All the tools derived specifically on what i had learnt before.
 
 ## System Directory
 *This repository serves as a live, expanding index of my quantitative infrastructure.*
@@ -11,8 +11,10 @@ I spend my leisure time to bridge physical engineering principles with quantitat
 * **Futures_Pricing:** Listed files related to futures basics projects.
 * **Options_Pricing:** Listed files related to options basics projects.
 * **Swaps_Pricing:** Listed files related to swaps basics projects.
-* **Kurtosis Scanner:** Tail-risk detection using the 4th statistical moment.
-* **(Future model will be logged here)*
+* **No_Arbitrage_&_Risk_Premia:** Listed files related to neutral risk and VRP basics projects.
+* **Hedging_&_The_Greeks:** Listed files related to option's greek and dynamic hedging basics projects.
+* **Kurtosis_Scanner:** Tail-risk detection using the 4th statistical moment.
+* *(Future model will be logged here)*
 
 ### Physical Commodities
 * **Oil Inventory Flow:** Predictive modeling for global crude supply chains.
