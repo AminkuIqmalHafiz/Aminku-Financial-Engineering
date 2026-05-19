@@ -82,7 +82,7 @@ fig.add_trace(go.Scatter3d(
 ))
 
 fig.update_layout(
-    title=f'Convexity Desk: {ticker_symbol} 3D Volatility Surface (Spot Price: ${current_price:.2f})',
+    title=f'Ticker: {ticker_symbol} 3D Volatility Surface',
     scene=dict(
         xaxis_title='Strike Price ($)',
         yaxis_title='Days to Expiration (DTE)',
