@@ -4,6 +4,7 @@ import numpy as np
 import plotly.graph_objects as go
 from scipy.stats import norm
 from scipy.optimize import brentq
+from scipy.interpolate import griddata
 import warnings
 
 # Suppress pandas chained assignment warnings for clean terminal output
@@ -98,63 +99,99 @@ def fetch_options_chain(ticker_symbol, risk_free_rate=0.05):
     return pd.DataFrame(master_chain), spot_price
 
 # ==========================================
-# 3. EXECUTION & RENDERING
+# 3. INTERPOLATION ENGINE
+# ==========================================
+def interpolate_surface(pivot_df):
+    """
+    Takes a sparse pivot table with NaNs and interpolates missing values
+    using a 2D meshgrid to create a smooth continuous surface.
+    """
+    x, y = np.meshgrid(pivot_df.columns, pivot_df.index)
+    mask = ~np.isnan(pivot_df.values)
+    
+    points = np.column_stack((x[mask], y[mask]))
+    values = pivot_df.values[mask]
+    
+    # Step 1: Linear interpolation for smooth inner gradients
+    grid_z = griddata(points, values, (x, y), method='linear')
+    
+    # Step 2: Nearest-neighbor fallback to patch the outer edges
+    grid_z_nearest = griddata(points, values, (x, y), method='nearest')
+    grid_z[np.isnan(grid_z)] = grid_z_nearest[np.isnan(grid_z)]
+    
+    return pd.DataFrame(grid_z, index=pivot_df.index, columns=pivot_df.columns)
+
+# ==========================================
+# 4. EXECUTION & RENDERING (CRASH-PROOF)
 # ==========================================
 if __name__ == "__main__":
-    print("\n" + "="*50)
-    print("⚡ INSTITUTIONAL OPTIONS RADAR: TERMINAL EDITION ⚡")
-    print("="*50)
-    
-    # User Input
-    ticker = input("\n[?] Enter Ticker Symbol (e.g., SPY): ").upper()
-    if not ticker:
-        ticker = "SPY"
-        print(f"[*] Defaulting to {ticker}")
+    try:
+        print("\n" + "="*50)
+        print("VOLATILITY SURFACE & GREEKS MAPPER")
+        print("="*50)
         
-    RISK_FREE_RATE = 0.05
-    
-    # Run Engine
-    df, spot = fetch_options_chain(ticker, RISK_FREE_RATE)
-    
-    if df is not None and not df.empty:
-        print("[>] Data extraction and Black-Scholes processing complete.")
-        print("[>] Formatting matrices...")
+        # User Input
+        ticker = input("\n[?] Enter Ticker Symbol (e.g., SPY): ").strip().upper()
+        if not ticker:
+            ticker = "SPY"
+            print(f"[*] Defaulting to {ticker}")
+            
+        RISK_FREE_RATE = 0.05
         
-        df['Strike'] = df['Strike'].round(1)
+        # Run Engine
+        df, spot = fetch_options_chain(ticker, RISK_FREE_RATE)
         
-        gamma_pivot = df.pivot_table(values='Gamma', index='Strike', columns='Days to Expiry', aggfunc='mean')
-        vega_pivot = df.pivot_table(values='Vega', index='Strike', columns='Days to Expiry', aggfunc='mean')
+        if df is not None and not df.empty:
+            print("[>] Data extraction and Black-Scholes processing complete.")
+            print("[>] Formatting matrices...")
+            
+            df['Strike'] = df['Strike'].round(1)
+            
+            gamma_pivot_raw = df.pivot_table(values='Gamma', index='Strike', columns='Days to Expiry', aggfunc='mean')
+            vega_pivot_raw = df.pivot_table(values='Vega', index='Strike', columns='Days to Expiry', aggfunc='mean')
 
-        # --- Render Gamma ---
-        print("[>] Rendering Gamma Concentration Heatmap...")
-        fig_gamma = go.Figure(data=go.Heatmap(
-            z=gamma_pivot.values, x=gamma_pivot.columns, y=gamma_pivot.index,
-            colorscale='Inferno', hoverongaps=False
-        ))
-        fig_gamma.add_hline(y=spot, line_dash="dash", line_color="white", annotation_text="Current Spot Price")
-        fig_gamma.update_layout(
-            title=f"Gamma Concentration (Acceleration Risk) | {ticker} Spot: ${spot:.2f}",
-            xaxis_title="Days to Expiration", yaxis_title="Strike Price ($)",
-            template="plotly_dark", height=800, width=1000
-        )
-        # fig.show() opens the interactive chart in your default web browser
-        fig_gamma.show() 
+            print("[>] Interpolating missing matrix data to smooth surfaces...")
+            gamma_pivot = interpolate_surface(gamma_pivot_raw)
+            vega_pivot = interpolate_surface(vega_pivot_raw)
 
-        # --- Render Vega ---
-        print("[>] Rendering Vega Concentration Heatmap...")
-        fig_vega = go.Figure(data=go.Heatmap(
-            z=vega_pivot.values, x=vega_pivot.columns, y=vega_pivot.index,
-            colorscale='Viridis', hoverongaps=False
-        ))
-        fig_vega.add_hline(y=spot, line_dash="dash", line_color="white", annotation_text="Current Spot Price")
-        fig_vega.update_layout(
-            title=f"Vega Concentration (Volatility Risk) | {ticker} Spot: ${spot:.2f}",
-            xaxis_title="Days to Expiration", yaxis_title="Strike Price ($)",
-            template="plotly_dark", height=800, width=1000
-        )
-        fig_vega.show()
+            # --- Render Gamma ---
+            print("[>] Rendering Gamma Concentration Heatmap...")
+            fig_gamma = go.Figure(data=go.Heatmap(
+                z=gamma_pivot.values, x=gamma_pivot.columns, y=gamma_pivot.index,
+                colorscale='Inferno', hoverongaps=False
+            ))
+            fig_gamma.add_hline(y=spot, line_dash="dash", line_color="white", annotation_text="Current Spot Price")
+            fig_gamma.update_layout(
+                title=f"Gamma Concentration (Acceleration Risk) | {ticker}",
+                xaxis_title="Days to Expiration", yaxis_title="Strike Price ($)",
+                template="plotly_dark", height=800, width=1000
+            )
+            fig_gamma.show() 
+
+            # --- Render Vega ---
+            print("[>] Rendering Vega Concentration Heatmap...")
+            fig_vega = go.Figure(data=go.Heatmap(
+                z=vega_pivot.values, x=vega_pivot.columns, y=vega_pivot.index,
+                colorscale='Viridis', hoverongaps=False
+            ))
+            fig_vega.add_hline(y=spot, line_dash="dash", line_color="white", annotation_text="Current Spot Price")
+            fig_vega.update_layout(
+                title=f"Vega Concentration (Volatility Risk) | {ticker}",
+                xaxis_title="Days to Expiration", yaxis_title="Strike Price ($)",
+                template="plotly_dark", height=800, width=1000
+            )
+            fig_vega.show()
+            
+            print("\n[✓] OPERATION SUCCESSFUL. Heatmaps opened in browser.")
+        else:
+            print("\n[!] OPERATION FAILED. Matrix could not be built. Yahoo Finance might be blocking the request or missing data.")
+
+    except Exception as e:
+        print(f"\n[!!!] CRITICAL ERROR ENCOUNTERED: {e}")
+        import traceback
+        traceback.print_exc()
         
-        print("\n[✓] OPERATION SUCCESSFUL. Heatmaps opened in browser.")
-        print("="*50 + "\n")
-    else:
-        print("\n[!] OPERATION FAILED. Matrix could not be built.\n")
+    finally:
+        # This absolutely guarantees the terminal stays open so you can read what happened!
+        print("="*50)
+        input("Press ENTER to exit the program...")
