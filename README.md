@@ -5,15 +5,15 @@
 I spend my leisure time connecting physical engineering principles with quantitative market mechanics. All the tools derived specifically on what i had learnt before.
 
 ## System Directory
-*This repository serves as a live, expanding index of my quantitative infrastructure.*
+*This repository is a growing index of my quantitative finance knowledge.*
 
 ### Quantitative Equities 
-* **Futures_Pricing:** Listed files related to futures basics projects.
-* **Options_Pricing:** Listed files related to options basics projects.
-* **Swaps_Pricing:** Listed files related to swaps basics projects.
-* **No_Arbitrage_&_Risk_Premia:** Listed files related to neutral risk and VRP basics projects.
-* **Hedging_&_The_Greeks:** Listed files related to option's greek and dynamic hedging basics projects.
-* **Kurtosis_Scanner:** Tail-risk detection using the 4th statistical moment.
+* **Futures Pricing:** Listed files related to futures basics projects.
+* **Options Pricing:** Listed files related to options basics projects.
+* **Swaps Pricing:** Listed files related to swaps basics projects.
+* **No Arbitrage & Risk Premia:** Listed files related to neutral risk and VRP basics projects.
+* **Hedging & The Greeks:** Listed files related to option's Greek and dynamic hedging basics projects.
+* **Kurtosis Scanner:** Tail-risk detection using the 4th statistical moment.
 * *(Future model will be logged here)*
 
 ### Physical Commodities
@@ -30,4 +30,5 @@ I spend my leisure time connecting physical engineering principles with quantita
 
 **Visualization:** plotly, matplotlib, streamlit
 
-Note: The structural logic, mathematical parameters (e.g., Gamma exposure, basis arbitrage), and workflow architecture of this project were independently designed. I utilized Large Language Models (LLMs) to assist with Python syntax generation and rapid prototyping, allowing me to focus entirely on the quantitative financial logic and system design
+**Note:**
+The logic and mathematical parameters (e.g., Gamma exposure, basis arbitrage) and effective workflow were designed independently. I use Large Language Models (LLMs) and AIs to aid me in recognizing appropriate Python syntax, allowing me to focus more on the quantitative finance logic entirely. 
