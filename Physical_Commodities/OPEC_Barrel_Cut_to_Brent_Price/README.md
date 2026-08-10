@@ -3,7 +3,7 @@
 # OPEC Macro Event Analyzer
 
 ### Overview
-The OPEC Macro Event Analyzer is a lightweight, rapid-deployment Python script designed to measure and visualize the structural price impact of historical OPEC production cuts. By analyzing Brent Crude prices the month before and the month after a major announcement, the script calculates the percentage change and renders a clear visual thesis of market reaction.
+The OPEC Macro Event Analyzer is a Python script simulation designed to measure and visualize the structural price impact of historical OPEC production cuts. By analyzing Brent Crude prices the month before and the month after a major announcement, the script calculates the percentage change and renders a clear visual thesis of market reaction.
 
 ### Features
 * **Zero-API Architecture:** Utilizes hardcoded dictionary arrays for immediate execution, completely bypassing external API rate limits or authentication walls.
@@ -12,10 +12,10 @@ The OPEC Macro Event Analyzer is a lightweight, rapid-deployment Python script d
 * **Terminal Diagnostics:** Prints a clean DataFrame to the console for quick numerical auditing before launching the visualization.
 
 ### The Engineering Thesis
-In macro petroleum trading, not all production cuts are treated equally by the market. Some cuts (like the historic COVID-19 intervention) trigger massive bullish reversals, while others (like the November 2022 cut) fail to halt a broader macroeconomic slide. This tool isolates specific historical events to quickly identify whether the market front-ran the news, respected the quota change, or simply ignored the cartel due to broader demand destruction.
+In macro petroleum trading, not all production cuts are treated equally by the market. Some cuts (like the historic COVID-19 intervention) trigger massive bullish reversals, while others (like the November 2022 cut) fail to halt a broader macroeconomic terms. This tool isolates specific historical events to quickly identify whether the market hyped by the news, follow-up perfectly with the change, or simply ignored the it due to broader demand disruption.
 
 ### Installation & Requirements
-This script requires the standard Python data science stack.
+This script requires the standard Python data science stack (pandas) and visualizer (matplotlib) .
 
 ```bash
 # Install the required dependencies
