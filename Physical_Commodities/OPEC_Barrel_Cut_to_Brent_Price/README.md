@@ -3,11 +3,10 @@
 # OPEC Macro Event Analyzer
 
 ### Overview
-The OPEC Macro Event Analyzer is a Python script simulation designed to measure and visualize the structural price impact of historical OPEC production cuts. By analyzing Brent Crude prices the month before and the month after a major announcement, the script calculates the percentage change and renders a clear visual thesis of market reaction.
+The OPEC Macro Event Analyzer is a Python script simulation designed to measure and visualize the structural price impact of historical OPEC production cuts. By analyzing Brent Crude prices the month before and the month after a major announcement, the script calculates the percentage change and presents a clear visual thesis of market reaction.
 
 ### Features
-* **Zero-API Architecture:** Utilizes hardcoded dictionary arrays for immediate execution, completely bypassing external API rate limits or authentication walls.
-* **Vectorized Math:** Leverages `pandas` to instantly calculate absolute price deltas and percentage changes across the entire dataset simultaneously.
+* **Vectorized Math:** Uses`pandas` to instantly calculate absolute price deltas and percentage changes across the entire dataset simultaneously.
 * **Conditional Visual Rendering:** Uses `matplotlib` list comprehensions to dynamically color-code the output chart (Green for bullish price action, Red for bearish/failed cuts).
 * **Terminal Diagnostics:** Prints a clean DataFrame to the console for quick numerical auditing before launching the visualization.
 
