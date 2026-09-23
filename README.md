@@ -5,7 +5,7 @@
 I spend my leisure time connecting physical engineering principles with quantitative market mechanics. All the tools derived specifically on what i had learnt before.
 
 ## System Directory
-*This repository is a growing index of my quantitative finance knowledge.*
+*This repository is an indicator on how much i covered so far.*
 
 ### Quantitative Equities 
 * **Futures Pricing:** Listed files related to futures basics projects.
@@ -21,8 +21,8 @@ I spend my leisure time connecting physical engineering principles with quantita
 * **OPEC Macro Event Analysis:** Correlating strategic barrel cut policies with Brent crude price action.
 * *(Future thermodynamic and geopolitical models will be logged here)*
 
-## Infrastructure Stack
-**Core:** Python 3.x
+## Libraries
+**Core:** Python 3.14.7
 
 **Data:** yfinance, EIA API, FINNHUB API,REST APIs
 
@@ -31,4 +31,4 @@ I spend my leisure time connecting physical engineering principles with quantita
 **Visualization:** plotly, matplotlib, streamlit
 
 **Note:**
-The logic and mathematical parameters (e.g., Gamma exposure, basis arbitrage) and effective workflow were designed independently. I use Large Language Models (LLMs) and AIs to aid me in recognizing appropriate Python syntax, allowing me to focus more on the quantitative finance logic entirely. 
+The logic and mathematical concept (e.g., Gamma exposure, basis arbitrage) are embedded in the code. I purposely use AIs (vibe-coded) because as the time of the pushing, Im still yet learning on the Python syntax and adapting with libraries.
